@@ -1,17 +1,13 @@
 import './App.css';
 import React from "react";
-import Chessboard from "chessboardjsx";
+import ChessboardApp from "./models/ChessboardApp";
 
-function App() {
-  const handleMove = (from, to) => {
-    console.log('handling move', from, to)
-  }
-
+const App = () => {
   return (
     <div className="App">
-      <Chessboard position={{e2: 'bP'}} onDrop={(move) => handleMove({from: move.sourceSquare, to: move.targetSquare})} />
+      <ChessboardApp />
     </div>
-  );
+  )
 }
 
 export default App;
