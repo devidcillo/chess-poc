@@ -5,9 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ce22466f-c5d7-4718-9d86-929c7fc9875f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/handlers/HandleMove.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/handlers/HandleMove.test.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/handlers/HandleMove.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/handlers/HandleMove.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,25 +26,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/Users/david/dev/poc/chess/chess-poc/src/models",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.standard": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.standard": "",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs.jest.jest_package": "/Users/david/dev/poc/chess/chess-poc/node_modules/react-scripts",
-    "nodejs_interpreter_path": "/Users/david/.nvm/versions/node/v16.8.0/bin/node",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "settings.nodejs",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/david/dev/poc/chess/chess-poc/src/models&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs.jest.jest_package&quot;: &quot;/Users/david/dev/poc/chess/chess-poc/node_modules/react-scripts&quot;,
+    &quot;nodejs_interpreter_path&quot;: &quot;/Users/david/.nvm/versions/node/v16.8.0/bin/node&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.completion&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/models" />
@@ -53,7 +53,7 @@
       <recent name="$PROJECT_DIR$/src/handlers/HandleMove.jsx" />
     </key>
   </component>
-  <component name="RunManager" selected="Jest.ChessboardApp.should render empty board (2)">
+  <component name="RunManager" selected="Jest.Handle Move">
     <configuration name="ChessboardApp.should render empty board (1)" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <node-options value="" />
@@ -82,39 +82,55 @@
       </test-names>
       <method v="2" />
     </configuration>
-    <configuration name="ChessboardApp.should render empty board" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+    <configuration name="Handle Move" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <node-options value="" />
       <jest-package value="$PROJECT_DIR$/node_modules/react-scripts" />
       <working-dir value="$PROJECT_DIR$" />
       <envs />
-      <scope-kind value="TEST" />
-      <test-file value="$PROJECT_DIR$/tests/models/ChessboardApp.spec.jsx" />
+      <scope-kind value="SUITE" />
+      <test-file value="$PROJECT_DIR$/src/handlers/HandleMove.test.jsx" />
       <test-names>
-        <test-name value="ChessboardApp" />
-        <test-name value="should render empty board" />
+        <test-name value="Handle Move" />
       </test-names>
       <method v="2" />
     </configuration>
-    <configuration name="renders learn react link" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+    <configuration name="Handle Move.White Pawn" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/react-scripts" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="SUITE" />
+      <test-file value="$PROJECT_DIR$/src/handlers/HandleMove.test.jsx" />
+      <test-names>
+        <test-name value="Handle Move" />
+        <test-name value="White Pawn" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="Handle Move.White Pawn.should not be able to move backward" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <node-options value="" />
       <jest-package value="$PROJECT_DIR$/node_modules/react-scripts" />
       <working-dir value="$PROJECT_DIR$" />
       <envs />
       <scope-kind value="TEST" />
-      <test-file value="$PROJECT_DIR$/src/App.test.js" />
+      <test-file value="$PROJECT_DIR$/src/handlers/HandleMove.test.jsx" />
       <test-names>
-        <test-name value="renders learn react link" />
+        <test-name value="Handle Move" />
+        <test-name value="White Pawn" />
+        <test-name value="should not be able to move backward" />
       </test-names>
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Jest.Handle Move" />
+        <item itemvalue="Jest.Handle Move.White Pawn" />
+        <item itemvalue="Jest.Handle Move.White Pawn.should not be able to move backward" />
         <item itemvalue="Jest.ChessboardApp.should render empty board (2)" />
         <item itemvalue="Jest.ChessboardApp.should render empty board (1)" />
-        <item itemvalue="Jest.renders learn react link" />
-        <item itemvalue="Jest.ChessboardApp.should render empty board" />
       </list>
     </recent_temporary>
   </component>
@@ -128,7 +144,9 @@
       <updated>1663610438394</updated>
       <workItem from="1663610440870" duration="3975000" />
       <workItem from="1663684749840" duration="42000" />
-      <workItem from="1663684805682" duration="4084000" />
+      <workItem from="1663684805682" duration="9545000" />
+      <workItem from="1664558452487" duration="36000" />
+      <workItem from="1664558500052" duration="887000" />
     </task>
     <servers />
   </component>
