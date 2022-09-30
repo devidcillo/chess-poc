@@ -1,16 +1,17 @@
+import {movePawn} from "./PawnMover";
+
 const validateMove = (from, to, piece) => {
-  if (piece === 'wP') {
-    const forwardMove = to === 'e3'
-    const startingCharge = from === 'e2' && to === 'e4'
-    return forwardMove || startingCharge
-  }
-  if (piece === 'bP') {
-    const forwardMove = to === 'e6'
-    const startingCharge = from === 'e7' && to === 'e5'
-    return forwardMove || startingCharge
-  }
-  if (piece === 'wR') {
-    return true
+  const split = piece.slice(1, 2)
+  switch (split) {
+    case 'P':
+      return movePawn({from, to, piece})
+    case 'R':
+      if (piece === 'wR') {
+        return true
+      }
+      break
+    default:
+      return false
   }
 }
 
