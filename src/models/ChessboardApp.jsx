@@ -6,7 +6,8 @@ const chessboardApp = () => {
   return (
     <div data-testid='board'>
       <Chessboard
-        position={{e2: 'wP'}}
+        position={{e2: 'wP', e6: 'bP', f3: 'wR', g7: 'bR'}}
+        // position='start'
         onDrop={(move) => handleMove({from: move.sourceSquare, to: move.targetSquare, piece: move.piece})}/>
     </div>
   )
