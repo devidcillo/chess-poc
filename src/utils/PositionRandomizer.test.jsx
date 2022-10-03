@@ -10,8 +10,13 @@ describe('Position Randomizer', function () {
     expect(randomFile()).toMatch(/[a-h]/)
   })
 
-  test('should return position one square back given starting position', () => {
+  test('should return position one square back given starting position for white piece', () => {
     const startingPosition = 'e3'
-    expect(oneSquareBack(startingPosition)).toBe('e2')
+    expect(oneSquareBack(startingPosition, 'w')).toBe('e2')
+  })
+
+  test('should return position one square back given starting position for black piece', () => {
+    const startingPosition = 'e3'
+    expect(oneSquareBack(startingPosition, 'b')).toBe('e4')
   })
 });

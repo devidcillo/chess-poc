@@ -13,8 +13,9 @@ export const randomPosition = () => {
   return `${randomFile()}${randomRank()}`
 }
 
-export const oneSquareBack = startingPosition => {
+export const oneSquareBack = (startingPosition, color) => {
   let positionArray = startingPosition.split("")
-  const newRank = positionArray[1] - 1
+  const positionModifier = color === 'w' ? -1 : 1
+  const newRank = Number(positionArray[1]) + positionModifier
   return `${positionArray[0]}${newRank}`
 }
