@@ -20,7 +20,7 @@ const validateMove = (piece, to, from) => {
     return forwardMove || startingCharge
   }
   if (piece === 'bP') {
-    const forwardMove = to === 'e6'
+    const forwardMove = oneSquareForward(from, to, 'b')
     const startingCharge = from === 'e7' && to === 'e5'
     return forwardMove || startingCharge
   }

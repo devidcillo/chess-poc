@@ -26,12 +26,16 @@ describe('Pawn Mover', function () {
 
   describe('Black Pawn', () => {
     test('should not be able to move backward', () => {
-      expect(movePawn({from: 'e7', to: 'e8', piece: 'bP'})).toBe(false);
+      const startingPosition = randomPosition()
+      const endingPosition = oneSquareBack(startingPosition, 'b');
+      expect(movePawn({from: startingPosition, to: endingPosition, piece: 'bP'})).toBe(false);
     })
 
     test('should be able to move forward', () => {
-      expect(movePawn({from: 'e7', to: 'e6', piece: 'bP'})).toBe(true);
-    })
+      const startingPosition = randomPosition()
+      let positionArray = startingPosition.split("")
+      const endingPosition = `${positionArray[0]}${Number(positionArray[1]) - 1}`
+      expect(movePawn({from: startingPosition, to: endingPosition, piece: 'bP'})).toBe(true);    })
 
     test('should be able to move forward 2 spaces when on starting position', () => {
       expect(movePawn({from: 'e7', to: 'e5', piece: 'bP'})).toBe(true);
