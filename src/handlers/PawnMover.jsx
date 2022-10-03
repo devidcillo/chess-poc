@@ -1,5 +1,5 @@
 const oneSquareForward = (startingPosition, endingPosition, color) => {
-  let positionArray = startingPosition.split("")
+  let positionArray = startingPosition.split('')
   const positionModifier = color === 'w' ? 1 : -1
   const newRank = Number(positionArray[1]) + positionModifier
   return `${positionArray[0]}${newRank}` === endingPosition
@@ -15,22 +15,16 @@ function twoSquaresFromHomePosition(startingPosition, endingPosition, color) {
   let positionArray = startingPosition.split('')
   const positionModifier = color === 'w' ? 2 : -2
   const newRank = Number(positionArray[1]) + positionModifier
-  const startingFromHomePosition = isStartingFromHomePosition(startingPosition, color)
   const moveIsTwoSquaresForwardOnSameFile = `${positionArray[0]}${newRank}` === endingPosition;
-  return startingFromHomePosition && moveIsTwoSquaresForwardOnSameFile
+  return isStartingFromHomePosition(startingPosition, color) && moveIsTwoSquaresForwardOnSameFile
 }
 
 const validateMove = (piece, to, from) => {
-  if (piece === 'wP') {
-    const forwardMove = oneSquareForward(from, to, 'w');
-    const startingCharge = twoSquaresFromHomePosition(from, to, 'w')
-    return forwardMove || startingCharge
-  }
-  if (piece === 'bP') {
-    const forwardMove = oneSquareForward(from, to, 'b')
-    const startingCharge = twoSquaresFromHomePosition(from, to, 'b')
-    return forwardMove || startingCharge
-  }
+  const pieceArray = piece.split('')
+  const color = pieceArray[0]
+  const forwardMove = oneSquareForward(from, to, color);
+  const startingCharge = twoSquaresFromHomePosition(from, to, color)
+  return forwardMove || startingCharge
 }
 
 export const movePawn = ({piece, to, from}) => {
