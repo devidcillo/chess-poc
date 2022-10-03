@@ -1,6 +1,12 @@
-function validateMove(piece, to, from) {
+import {oneSquareForward} from "../utils/PositionRandomizer";
+
+const checkValidMoveForward = (from, to) => {
+  return to === oneSquareForward(from, 'w');
+}
+
+const validateMove = (piece, to, from) => {
   if (piece === 'wP') {
-    const forwardMove = to === 'e3'
+    const forwardMove = checkValidMoveForward(from, to)
     const startingCharge = from === 'e2' && to === 'e4'
     return forwardMove || startingCharge
   }
