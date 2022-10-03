@@ -12,3 +12,9 @@ export const randomFile = () => {
 export const randomPosition = () => {
   return `${randomFile()}${randomRank()}`
 }
+
+export const oneSquareBack = startingPosition => {
+  let positionArray = startingPosition.split("")
+  const newRank = positionArray[1] - 1
+  return `${positionArray[0]}${newRank}`
+}

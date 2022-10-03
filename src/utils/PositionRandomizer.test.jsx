@@ -1,4 +1,4 @@
-import { randomFile, randomPosition, randomRank} from "./PositionRandomizer";
+import {oneSquareBack, randomFile, randomPosition, randomRank} from "./PositionRandomizer";
 
 describe('Position Randomizer', function () {
   test('should randomize within rank limits', () => {
@@ -8,5 +8,10 @@ describe('Position Randomizer', function () {
 
   test('should randomize within file limits', () => {
     expect(randomFile()).toMatch(/[a-h]/)
+  })
+
+  test('should return position one square back given starting position', () => {
+    const startingPosition = 'e3'
+    expect(oneSquareBack(startingPosition)).toBe('e2')
   })
 });
