@@ -38,7 +38,9 @@ describe('Pawn Mover', function () {
       expect(movePawn({from: startingPosition, to: endingPosition, piece: 'bP'})).toBe(true);    })
 
     test('should be able to move forward 2 spaces when on starting position', () => {
-      expect(movePawn({from: 'e7', to: 'e5', piece: 'bP'})).toBe(true);
-    })
+      const startingPosition = randomPositionAtRank(7)
+      const positionArray = startingPosition.split("");
+      const endingPosition = `${positionArray[0]}${Number(positionArray[1]) - 2}`
+      expect(movePawn({from: startingPosition, to: endingPosition, piece: 'bP'})).toBe(true);    })
   })
 })
