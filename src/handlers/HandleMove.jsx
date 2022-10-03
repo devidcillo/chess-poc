@@ -1,10 +1,10 @@
 import {movePawn} from "./PawnMover";
 
 const validateMove = (from, to, piece) => {
-  const split = piece.slice(1, 2)
-  switch (split) {
+  const splitPiece = piece.split('')
+  switch (splitPiece[1]) {
     case 'P':
-      return movePawn({from, to, piece})
+      return movePawn({from, to, color: splitPiece[0]})
     case 'R':
       if (piece === 'wR') {
         return true

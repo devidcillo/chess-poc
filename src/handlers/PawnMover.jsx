@@ -19,14 +19,12 @@ function twoSquaresFromHomePosition(startingPosition, endingPosition, color) {
   return isStartingFromHomePosition(startingPosition, color) && moveIsTwoSquaresForwardOnSameFile
 }
 
-const validateMove = (piece, to, from) => {
-  const pieceArray = piece.split('')
-  const color = pieceArray[0]
+const validateMove = (from, to, color) => {
   const forwardMove = oneSquareForward(from, to, color);
   const startingCharge = twoSquaresFromHomePosition(from, to, color)
   return forwardMove || startingCharge
 }
 
-export const movePawn = ({piece, to, from}) => {
-  return validateMove(piece, to, from);
+export const movePawn = ({from, to, color}) => {
+  return validateMove(from, to, color);
 }
