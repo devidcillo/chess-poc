@@ -1,4 +1,4 @@
-import {oneSquareBack, randomFile, randomPositionAtFile, randomRank} from "./PositionRandomizer";
+import {oneSquareBack, randomFile, randomPositionAtFile, randomPositionAtRank, randomRank} from "./PositionRandomizer";
 
 describe('Position Randomizer', function () {
   test('should randomize within rank limits', () => {
@@ -25,5 +25,12 @@ describe('Position Randomizer', function () {
     const rankRegex = '[1-8]'
     const regexToMatch = new RegExp(expectedFile + rankRegex)
     expect(randomPositionAtFile(expectedFile)).toMatch(regexToMatch)
+  })
+
+  test('should return a random position given rank', () => {
+    const expectedRank = randomRank()
+    const fileRegex = '[a-h]'
+    const regexToMatch = new RegExp(fileRegex + expectedRank)
+    expect(randomPositionAtRank(expectedRank)).toMatch(regexToMatch)
   })
 });
