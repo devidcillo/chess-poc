@@ -13,6 +13,10 @@ export const randomPosition = () => {
   return `${randomFile()}${randomRank()}`
 }
 
+export const randomPositionAtFile = file => {
+  return `${file}${randomRank()}`
+}
+
 export const oneSquareBack = (startingPosition, color) => {
   let positionArray = startingPosition.split("")
   const positionModifier = color === 'w' ? -1 : 1

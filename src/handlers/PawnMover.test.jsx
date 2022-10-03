@@ -17,6 +17,8 @@ describe('Pawn Mover', function () {
     })
 
     test('should be able to move forward 2 spaces when on starting position', () => {
+      const startingPosition = randomPawnStartingPosition('w')
+
       expect(movePawn({from: 'e2', to: 'e4', piece: 'wP'})).toBe(true);
     })
   })
