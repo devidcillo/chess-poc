@@ -1,5 +1,5 @@
 import {movePawn} from "./PawnMover";
-import {oneSquareBack, randomPosition} from "../utils/PositionRandomizer";
+import {oneSquareBack, randomPosition, randomPositionAtRank} from "../utils/PositionRandomizer";
 
 describe('Pawn Mover', function () {
   describe('White Pawn', () => {
@@ -17,9 +17,10 @@ describe('Pawn Mover', function () {
     })
 
     test('should be able to move forward 2 spaces when on starting position', () => {
-      const startingPosition = randomPawnStartingPosition('w')
-
-      expect(movePawn({from: 'e2', to: 'e4', piece: 'wP'})).toBe(true);
+      const startingPosition = randomPositionAtRank(2)
+      const positionArray = startingPosition.split("");
+      const endingPosition = `${positionArray[0]}${Number(positionArray[1]) + 2}`
+      expect(movePawn({from: startingPosition, to: endingPosition, piece: 'wP'})).toBe(true);
     })
   })
 
