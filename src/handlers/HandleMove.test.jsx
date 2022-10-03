@@ -28,9 +28,14 @@ describe('Handle Move', function () {
       expect(() => handleMove({from: 'e7', to: 'e5', piece: 'bP'})).not.toThrow();
     })
   })
+
   describe('White Rook', () => {
     test('should move forward', () => {
       expect(() => handleMove({from: 'e1', to: 'e8', piece: 'wR'})).not.toThrow();
+    })
+
+    test('should move backward', () => {
+      expect(() => handleMove({from: 'e8', to: 'e1', piece: 'wR'})).not.toThrow();
     })
   })
 })

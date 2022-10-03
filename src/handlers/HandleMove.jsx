@@ -1,4 +1,5 @@
 import {movePawn} from "./PawnMover";
+import {moveRook} from "./RookMover";
 
 const validateMove = (from, to, piece) => {
   const splitPiece = piece.split('')
@@ -6,10 +7,7 @@ const validateMove = (from, to, piece) => {
     case 'P':
       return movePawn({from, to, color: splitPiece[0]})
     case 'R':
-      if (piece === 'wR') {
-        return true
-      }
-      break
+      return moveRook({from, to})
     default:
       return false
   }
