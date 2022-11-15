@@ -13,9 +13,14 @@ const validateMove = (from, to, piece) => {
   }
 }
 
-export const handleMove = ({from, to, piece}) => {
+export const handleMove = (from, to, piece) => {
   console.log('handling move', from, to, piece)
   const validMove = validateMove(from, to, piece)
-  if (!validMove)
-    throw new Error('invalid move')
+  if (!validMove) {
+    console.log('invalid move')
+    return false
+  }
+    // throw new Error('invalid move')
+  console.log('valid move')
+  return true
 }
