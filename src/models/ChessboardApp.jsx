@@ -1,25 +1,22 @@
 import {Chessboard} from "react-chessboard";
 import React from "react";
 import {handleMove} from "../handlers/HandleMove";
+import {startPosition} from "../initialState";
 
 const chessboardApp = () => {
-  const [state, setState] = React.useState({b7: 'bP'})
+  const [state, setState] = React.useState(startPosition)
   const handleMoveAndUpdate = (from, to, piece) => {
     const stateCopy = {...state}
-    console.log('stateCopy', stateCopy)
     if (handleMove(from, to, piece)) {
-      const varib = {h5: 'wP'}
-      setState(varib)
-      console.log('state', state)
+      stateCopy[from] = ''
+      stateCopy[to] = piece
+      setState({...stateCopy})
     }
   }
-  const printPos = position => {
-    console.log('here is my position', position)
-    // setState(position)
-  }
+
   return (
     <div data-testid='board'>
-      <Chessboard onPieceDrop={handleMoveAndUpdate} position={state} getPositionObject={printPos}/>
+      <Chessboard onPieceDrop={handleMoveAndUpdate} position={state} />
     </div>
   )
 }
