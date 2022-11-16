@@ -14,9 +14,21 @@ const chessboardApp = () => {
     }
   }
 
+  const processInputEvent = event => {
+    if ('Enter' === event.code) {
+      const moveString = event.target.value
+      const from = moveString.slice(0, 2);
+      const to = moveString.slice(2, 4);
+      const piece = state[from]
+      console.log(`moving ${piece} from ${from} to ${to}`)
+      handleMoveAndUpdate(from, to, piece)
+    }
+  }
+
   return (
     <div data-testid='board'>
-      <Chessboard onPieceDrop={handleMoveAndUpdate} position={state} />
+      <Chessboard position={state} />
+      <input type={"text"} onKeyDown={processInputEvent} maxLength={4} />
     </div>
   )
 }
