@@ -5,6 +5,7 @@ import {startPosition} from "../initialState";
 
 const chessboardApp = () => {
   const [state, setState] = React.useState(startPosition)
+  
   const handleMoveAndUpdate = (from, to, piece) => {
     const stateCopy = {...state}
     if (handleMove(from, to, piece)) {
@@ -28,7 +29,7 @@ const chessboardApp = () => {
   return (
     <div data-testid='board'>
       <Chessboard position={state} />
-      <input type={"text"} onKeyDown={processInputEvent} maxLength={4} />
+      <input data-testid="moves-input" type={"text"} onKeyDown={processInputEvent} maxLength={4} />
     </div>
   )
 }
