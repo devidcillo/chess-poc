@@ -4,7 +4,8 @@ describe('empty spec', () => {
     
     cy.get('input').type('a2a3')
     cy.get('input').type('{enter}')
-    
-//FIXME: Add assertion
+
+    cy.get('[data-square="a2"]').find('path').should('not.exist')
+    cy.get('[data-square="a3"]').find('path').should('exist')
   })
 })
