@@ -28,7 +28,7 @@ const chessboardApp = () => {
 
   return (
     <div data-testid='board'>
-      <Chessboard position={state} />
+      <Chessboard position={state} arePiecesDraggable={false} />
       <input data-testid="moves-input" type={"text"} onKeyDown={processInputEvent} maxLength={4} />
     </div>
   )
