@@ -32,3 +32,12 @@ export const startPosition = {
   "g1": "wN",
   "h1": "wR"
 }
+
+export const castlingPossible = {
+  "a8": "bR",
+  "e8": "bK",
+  "h8": "bR",
+  "a1": "wR",
+  "e1": "wK",
+  "h1": "wR"
+}
