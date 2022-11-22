@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import {handleMove} from "../handlers/HandleMove";
 import {startPosition} from "../initialState";
 
-const chessboardApp = () => {
+const ChessboardApp = () => {
   const [state, setState] = useState(startPosition)
   
   const handleMoveAndUpdate = (from, to, piece) => {
@@ -34,4 +34,4 @@ const chessboardApp = () => {
   )
 }
 
-export default chessboardApp
+export default ChessboardApp
