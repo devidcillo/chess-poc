@@ -1,7 +1,7 @@
 import { PactV3 } from '@pact-foundation/pact'
 import { API } from './api';
 import { MatchersV3 } from '@pact-foundation/pact';
-import { Product } from './product';
+import { Product } from './opening';
 const { eachLike, like } = MatchersV3;
 const Pact = PactV3;
 
@@ -16,14 +16,14 @@ describe('API Pact test', () => {
   describe('retrieving a product', () => {
     test('ID 10 exists', async () => {
       // Arrange
-      const expectedProduct = {
-        id: '10',
-        type: 'CREDIT_CARD',
-        name: '28 Degrees'
-      };
+    //   const expectedProduct = {
+    //     id: '10',
+    //     type: 'CREDIT_CARD',
+    //     name: '28 Degrees'
+    //   };
 
       // Uncomment to see this fail
-      // const expectedProduct = { id: '10', type: 'CREDIT_CARD', name: '28 Degrees', price: 30.0, newField: 22}
+      const expectedProduct = { id: '12', type: 'CREDIT_CARD', name: '28 Degrees', price: 30.0, newField: 22}
 
       mockProvider
         .given('a product with ID 10 exists')
@@ -45,9 +45,10 @@ describe('API Pact test', () => {
       return mockProvider.executeTest(async (mockserver) => {
         // Act
         const api = new API(mockserver.url);
-        const product = await api.getProduct('10');
+        const product = await api.getOpening('10');
 
         // Assert - did we get the expected response
+        console.log(product);
         expect(product).toStrictEqual(new Product(expectedProduct));
         return;
       });
@@ -73,49 +74,49 @@ describe('API Pact test', () => {
         const api = new API(mockserver.url);
 
         // make request to Pact mock server
-        await expect(api.getProduct('11')).rejects.toThrow(
+        await expect(api.getOpening('11')).rejects.toThrow(
           'Request failed with status code 404'
         );
         return;
       });
     });
   });
-  describe('retrieving products', () => {
-    test('products exists', async () => {
-      // set up Pact interactions
-      const expectedProduct = {
-        id: '10',
-        type: 'CREDIT_CARD',
-        name: '28 Degrees'
-      };
+//   describe('retrieving products', () => {
+//     test('products exists', async () => {
+//       // set up Pact interactions
+//       const expectedProduct = {
+//         id: '10',
+//         type: 'CREDIT_CARD',
+//         name: '28 Degrees'
+//       };
 
-      mockProvider
-        .given('products exist')
-        .uponReceiving('a request to get all products')
-        .withRequest({
-          method: 'GET',
-          path: '/products',
-          headers: {
-            Authorization: like('Bearer 2019-01-14T11:34:18.045Z')
-          }
-        })
-        .willRespondWith({
-          status: 200,
-          headers: {
-            'Content-Type': 'application/json; charset=utf-8'
-          },
-          body: eachLike(expectedProduct)
-        });
-      return mockProvider.executeTest(async (mockserver) => {
-        const api = new API(mockserver.url);
+//       mockProvider
+//         .given('products exist')
+//         .uponReceiving('a request to get all products')
+//         .withRequest({
+//           method: 'GET',
+//           path: '/products',
+//           headers: {
+//             Authorization: like('Bearer 2019-01-14T11:34:18.045Z')
+//           }
+//         })
+//         .willRespondWith({
+//           status: 200,
+//           headers: {
+//             'Content-Type': 'application/json; charset=utf-8'
+//           },
+//           body: eachLike(expectedProduct)
+//         });
+//       return mockProvider.executeTest(async (mockserver) => {
+//         const api = new API(mockserver.url);
 
-        // make request to Pact mock server
-        const products = await api.getAllProducts();
+//         // make request to Pact mock server
+//         const products = await api.getAllProducts();
 
-        // assert that we got the expected response
-        expect(products).toStrictEqual([new Product(expectedProduct)]);
-        return;
-      });
-    });
-  });
+//         // assert that we got the expected response
+//         expect(products).toStrictEqual([new Product(expectedProduct)]);
+//         return;
+//       });
+//     });
+//   });
 });

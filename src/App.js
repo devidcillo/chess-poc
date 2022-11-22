@@ -2,7 +2,6 @@ import './App.css';
 import React from "react";
 import {
   BrowserRouter as Router,
-  Switch,
   Route,
   Link, Routes
 } from "react-router-dom";
@@ -16,10 +15,10 @@ const App = () => {
         <nav>
           <ul>
             <li>
-              <Link to="/">Home</Link>
+              <Link to="/">Game</Link>
             </li>
             <li>
-              <Link to="/list">About</Link>
+              <Link to="/list">Stats</Link>
             </li>
           </ul>
         </nav>

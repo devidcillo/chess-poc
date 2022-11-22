@@ -1,25 +1,20 @@
 import React, { useState, useEffect } from 'react';
-import { getSamples } from '../services/api';
+import API from '../services/api';
 
 const List = () => {
-    const [posts, setPosts] = useState([]);
-
-    const options = {
-        method: 'GET'
-    };
+    const [openings, setOpenings] = useState([]);
 
     useEffect(() => {
-        fetch('https://lichess.org/api/tournament', options)
-          .then((res) => res.json())
+        API.getAllOpenings()
           .then((result) => {
-            setPosts(result['created']);
+            setOpenings(result);
           })
           .catch(err => console.error(err));
       }, []);
   
     return (<ul>
-        {posts.map((post) => (
-          <li key={post.id}>{post.fullName}</li>
+        {openings.map((opening) => (
+          <li key={opening.id}>{opening.name}</li>
         ))}
       </ul>);
 }

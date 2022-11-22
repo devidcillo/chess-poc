@@ -1,5 +1,5 @@
 import {Chessboard} from "react-chessboard";
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {handleMove} from "../handlers/HandleMove";
 import {startPosition} from "../initialState";
 
