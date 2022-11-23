@@ -95,4 +95,34 @@ describe('Kings', () => {
     expect(moveKing({from: startingPosition, to: endingPosition})).toBe(false);
   })
 
+  test('should move one square diagonal down and left', () => {
+    const startingPosition = randomPositionAtFile('h')
+    let positionArray = startingPosition.split("")
+    const endingPosition = `${oneFileToTheLeftOf(positionArray[0])}${Number(positionArray[1]) - 1}`
+    expect(moveKing({from: startingPosition, to: endingPosition})).toBe(true)
+  })
+
+  test('should not move two squares diagonal down and left', () => {
+    const startingPosition = randomPositionAtFile('h')
+    let positionArray = startingPosition.split("")
+    const twoFilesToTheLeftOfStartingFile = oneFileToTheLeftOf(oneFileToTheLeftOf(positionArray[0]))
+    const endingPosition = `${twoFilesToTheLeftOfStartingFile}${Number(positionArray[1]) - 2}`
+    expect(moveKing({from: startingPosition, to: endingPosition})).toBe(false)
+  })
+
+  test('should move one square diagonal down and right', () => {
+    const startingPosition = randomPositionAtFile('a')
+    let positionArray = startingPosition.split("")
+    const endingPosition = `${oneFileToTheRightOf(positionArray[0])}${Number(positionArray[1]) - 1}`
+    expect(moveKing({from: startingPosition, to: endingPosition})).toBe(true)
+  })
+
+  test('should not move two squares diagonal down and right', () => {
+    const startingPosition = 'a1'
+    let positionArray = startingPosition.split("")
+    const twoFilesToTheRightOfStartingFile = oneFileToTheRightOf(oneFileToTheRightOf(positionArray[0]))
+    const endingPosition = `${twoFilesToTheRightOfStartingFile}${positionArray[1] - 2}`
+    expect(moveKing({from: startingPosition, to: endingPosition})).toBe(false);
+  })
+
 });

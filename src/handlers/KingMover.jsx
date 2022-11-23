@@ -28,14 +28,30 @@ const oneSquareDiagonalUpLeft = (startingPosition, endingPosition) => {
   return `${oneFileToTheLeftOf(positionArray[0])}${newRank}` === endingPosition
 }
 
+const oneSquareDiagonalDownLeft = (startingPosition, endingPosition) => {
+  let positionArray = startingPosition.split('')
+  const newRank = Number(positionArray[1]) - 1
+  return `${oneFileToTheLeftOf(positionArray[0])}${newRank}` === endingPosition
+}
+
 const oneSquareDiagonalUpRight = (startingPosition, endingPosition) => {
   let positionArray = startingPosition.split('')
   const newRank = Number(positionArray[1]) + 1
   return `${oneFileToTheRightOf(positionArray[0])}${newRank}` === endingPosition
 }
 
+const oneSquareDiagonalDownRight = (startingPosition, endingPosition) => {
+  let positionArray = startingPosition.split('')
+  const newRank = Number(positionArray[1]) - 1
+  return `${oneFileToTheRightOf(positionArray[0])}${newRank}` === endingPosition
+}
+
 const validateMove = (from, to) => {
-  return oneSquareForward(from, to) || oneSquareBackward(from, to) || oneSquareToTheLeft(from, to) || oneSquareToTheRight(from, to) || oneSquareDiagonalUpLeft(from, to) || oneSquareDiagonalUpRight(from, to)
+  const isMoveVertical = oneSquareForward(from, to) || oneSquareBackward(from, to);
+  const isMoveHorizontal = oneSquareToTheLeft(from, to) || oneSquareToTheRight(from, to);
+  const isMoveDiagonalForward = oneSquareDiagonalUpLeft(from, to) || oneSquareDiagonalUpRight(from, to);
+  const isMoveDiagonalBackward = oneSquareDiagonalDownLeft(from, to) || oneSquareDiagonalDownRight(from, to)
+  return isMoveVertical || isMoveHorizontal || isMoveDiagonalForward || isMoveDiagonalBackward
 }
 
 export const moveKing = ({from, to}) => {
