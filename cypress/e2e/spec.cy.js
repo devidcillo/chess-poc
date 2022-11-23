@@ -15,15 +15,13 @@ describe('empty spec', () => {
     cy.get('input').type('castle')
     cy.get('input').type('{enter}')
     cy.get('input').type('{enter}')
-    // cy.get('input').type('0-0')
-    // cy.get('input').type('{enter}')
+    cy.get('input').clear()
+    cy.get('input').type('0-0')
+    cy.get('input').type('{enter}')
 
     cy.get('[data-square="e1"]').find('path').should('not.exist')
     cy.get('[data-square="h1"]').find('path').should('not.exist')
-    cy.get('[data-square="b1"]').find('path').should('exist')
-    cy.get('[data-square="c1"]').find('path').should('exist')
+    cy.get('[data-square="f1"]').find('path').should('exist')
+    cy.get('[data-square="g1"]').find('path').should('exist')
   })
 })
-
-
-//TODO Add a king or rook move (David)
