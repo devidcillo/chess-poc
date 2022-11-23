@@ -6,26 +6,41 @@ import {handleSpecialMove} from "../handlers/HandleSpecialMove";
 
 const ChessboardApp = () => {
   const [record, setRecord] = useState(startPosition)
-  const [error, setError] = useState(false)
+  const [isError, setIsError] = useState(false)
+  const [isInProgress, setIsInProgress] = useState(false)
+  const [move, setMove] = useState('')
+
+  const resetMove = () => {
+    setMove('')
+    setIsError(false)
+    setIsInProgress(true)
+  }
 
   const handleMoveAndUpdate = (from, to, piece) => {
-    const stateCopy = {...record}
     if (handleMove(from, to, piece)) {
+      const stateCopy = {...record}
       stateCopy[from] = ''
       stateCopy[to] = piece
       setRecord({...stateCopy})
-      setError(false)
+      resetMove()
     } else {
-      setError(true)
+      setIsError(true)
     }
   }
 
+  const handleChange = event => {
+    setMove(event.target.value)
+  }
+
   const processInputEvent = event => {
-    const moveString = event.target.value
     if ('Enter' === event.code) {
+      const moveString = event.target.value
+      
+      setIsInProgress(true)
+
       if ('castle' === moveString) {
         setRecord(castlingPossible)
-        setError(false)
+        setIsError(false)
       }
       else {
         const from = moveString.slice(0, 2);
@@ -36,19 +51,22 @@ const ChessboardApp = () => {
     }
   }
 
+  const shouldShowError = isError
+  const shouldShowSucess = !isError && isInProgress
+
   return (
     <div data-testid='board'>
       <Chessboard position={record} arePiecesDraggable={false}/>
       <div>
         <label htmlFor={'moveInput'}>Move:</label>
-        <input id="moveInput" data-testid="moves-input" placeholder="Example: a2a3" type={"text"} onKeyDown={processInputEvent} maxLength={10}/>
+        <input id="moveInput" data-testid="moves-input" placeholder="Example: a2a3" type={"text"} onChange={handleChange} onKeyDown={processInputEvent} maxLength={10} value={move} />
       </div>
       
-      {error && (<div data-testid="error-message">
+      {shouldShowError && (<div data-testid="error-message">
         <h5>Invalid move! Try a different move</h5>
       </div>)}
 
-      {!error && (<div data-testid="success-message">
+      {shouldShowSucess && (<div data-testid="success-message">
         <h5>Great move!</h5>
       </div>)}
     </div>

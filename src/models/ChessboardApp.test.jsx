@@ -18,8 +18,6 @@ describe('ChessboardApp', () => {
   test('should render sucess message when users does valid move', () => {
     render(<ChessboardApp/>);
 
-    userEvent.click(screen.getByRole('textbox'))
-    userEvent.type(screen.getByRole('textbox'), 'a2a4');
     userEvent.type(screen.getByRole('textbox'), 'a2a4');
     userEvent.type(screen.getByRole('textbox'), '[Enter]');
 
@@ -30,7 +28,6 @@ describe('ChessboardApp', () => {
   test('should render error message when users does invalid move', () => {
     render(<ChessboardApp/>);
 
-    userEvent.click(screen.getByRole('textbox'))
     userEvent.type(screen.getByRole('textbox'), 'a2b4');
     userEvent.type(screen.getByRole('textbox'), '[Enter]');
 
