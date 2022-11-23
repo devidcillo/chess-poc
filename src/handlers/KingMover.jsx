@@ -22,12 +22,20 @@ const oneSquareToTheRight = (startingPosition, endingPosition) => {
   return `${oneFileToTheRightOf(positionArray[0])}${positionArray[1]}` === endingPosition
 }
 
-const oneSquareDiagonalUpLeft = (from, to) => {
-  return 'a2' === to
+const oneSquareDiagonalUpLeft = (startingPosition, endingPosition) => {
+  let positionArray = startingPosition.split('')
+  const newRank = Number(positionArray[1]) + 1
+  return `${oneFileToTheLeftOf(positionArray[0])}${newRank}` === endingPosition
+}
+
+const oneSquareDiagonalUpRight = (startingPosition, endingPosition) => {
+  let positionArray = startingPosition.split('')
+  const newRank = Number(positionArray[1]) + 1
+  return `${oneFileToTheRightOf(positionArray[0])}${newRank}` === endingPosition
 }
 
 const validateMove = (from, to) => {
-  return oneSquareForward(from, to) || oneSquareBackward(from, to) || oneSquareToTheLeft(from, to) || oneSquareToTheRight(from, to) || oneSquareDiagonalUpLeft(from, to)
+  return oneSquareForward(from, to) || oneSquareBackward(from, to) || oneSquareToTheLeft(from, to) || oneSquareToTheRight(from, to) || oneSquareDiagonalUpLeft(from, to) || oneSquareDiagonalUpRight(from, to)
 }
 
 export const moveKing = ({from, to}) => {
