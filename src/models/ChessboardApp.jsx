@@ -17,10 +17,11 @@ const ChessboardApp = () => {
       if (updatedRecord === record) {
         console.log('records are the same')
         setIsError(true)
+      } else {
+        setRecord(updatedRecord)
+        setIsError(false)
+        setIsSuccess(true)
       }
-      setRecord(updatedRecord)
-      setIsError(false)
-      setIsSuccess(true)
     }
   }
 
