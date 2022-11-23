@@ -1,3 +1,5 @@
+import {oneFileToTheLeftOf, oneFileToTheRightOf} from "../utils/PositionRandomizer";
+
 const oneSquareForward = (startingPosition, endingPosition) => {
   let positionArray = startingPosition.split('')
   const newRank = Number(positionArray[1]) + 1
@@ -10,38 +12,14 @@ const oneSquareBackward = (startingPosition, endingPosition) => {
   return `${positionArray[0]}${newRank}` === endingPosition
 }
 
-const fileToTheLeftOf = positionArray => {
-  const adjacentFiles = {
-    'b': 'a',
-    'c': 'b',
-    'd': 'c',
-    'e': 'd',
-    'f': 'e',
-    'h': 'g'
-  }
-  return adjacentFiles[positionArray]
-}
-
-const fileToTheRightOf = positionArray => {
-  const adjacentFiles = {
-    'a': 'b',
-    'b': 'c',
-    'c': 'd',
-    'd': 'e',
-    'e': 'f',
-    'g': 'h'
-  }
-  return adjacentFiles[positionArray]
-}
-
 const oneSquareToTheLeft = (startingPosition, endingPosition) => {
   let positionArray = startingPosition.split('')
-  return `${fileToTheLeftOf(positionArray[0])}${positionArray[1]}` === endingPosition
+  return `${oneFileToTheLeftOf(positionArray[0])}${positionArray[1]}` === endingPosition
 }
 
 const oneSquareToTheRight = (startingPosition, endingPosition) => {
   let positionArray = startingPosition.split('')
-  return `${fileToTheRightOf(positionArray[0])}${positionArray[1]}` === endingPosition
+  return `${oneFileToTheRightOf(positionArray[0])}${positionArray[1]}` === endingPosition
 }
 
 const oneSquareDiagonalUpLeft = (from, to) => {

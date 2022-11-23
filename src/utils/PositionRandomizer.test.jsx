@@ -1,4 +1,11 @@
-import {oneSquareBack, randomFile, randomPositionAtFile, randomPositionAtRank, randomRank} from "./PositionRandomizer";
+import {
+  oneFileToTheLeftOf, oneFileToTheRightOf,
+  oneSquareBack,
+  randomFile,
+  randomPositionAtFile,
+  randomPositionAtRank,
+  randomRank
+} from "./PositionRandomizer";
 
 describe('Position Randomizer', function () {
   test('should randomize within rank limits', () => {
@@ -33,4 +40,24 @@ describe('Position Randomizer', function () {
     const regexToMatch = new RegExp(fileRegex + expectedRank)
     expect(randomPositionAtRank(expectedRank)).toMatch(regexToMatch)
   })
-});
+
+  test('should return what file is to the left of given file', () => {
+    expect(oneFileToTheLeftOf('b')).toBe('a')
+    expect(oneFileToTheLeftOf('c')).toBe('b')
+    expect(oneFileToTheLeftOf('d')).toBe('c')
+    expect(oneFileToTheLeftOf('e')).toBe('d')
+    expect(oneFileToTheLeftOf('f')).toBe('e')
+    expect(oneFileToTheLeftOf('g')).toBe('f')
+    expect(oneFileToTheLeftOf('h')).toBe('g')
+  })
+
+  test('should return what file is to the right of given file', () => {
+    expect(oneFileToTheRightOf('a')).toBe('b')
+    expect(oneFileToTheRightOf('b')).toBe('c')
+    expect(oneFileToTheRightOf('c')).toBe('d')
+    expect(oneFileToTheRightOf('d')).toBe('e')
+    expect(oneFileToTheRightOf('e')).toBe('f')
+    expect(oneFileToTheRightOf('f')).toBe('g')
+    expect(oneFileToTheRightOf('g')).toBe('h')
+  })
+})

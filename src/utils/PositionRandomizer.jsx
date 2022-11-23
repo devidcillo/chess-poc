@@ -35,6 +35,7 @@ export const oneFileToTheLeftOf = givenFile => {
     'd': 'c',
     'e': 'd',
     'f': 'e',
+    'g': 'f',
     'h': 'g'
   }
   return adjacentFiles[givenFile]
@@ -48,6 +49,7 @@ export const oneFileToTheRightOf = givenFile => {
     'c': 'd',
     'd': 'e',
     'e': 'f',
+    'f': 'g',
     'g': 'h'
   }
   return adjacentFiles[givenFile]

@@ -1,49 +1,49 @@
 import {
   oneFileToTheLeftOf,
   oneFileToTheRightOf,
-  randomPosition,
+  randomPosition, randomPositionAtFile,
   randomPositionAtRank
 } from "../utils/PositionRandomizer";
 import {moveKing} from "./KingMover";
 
 describe('Kings', () => {
   test('should move one square forward', () => {
-    const startingPosition = randomPosition()
+    const startingPosition = randomPositionAtRank('1')
     let positionArray = startingPosition.split("")
     const endingPosition = `${positionArray[0]}${Number(positionArray[1]) + 1}`
     expect(moveKing({from: startingPosition, to: endingPosition})).toBe(true);
   })
 
   test('should not move two squares forward', () => {
-    const startingPosition = randomPosition()
+    const startingPosition = randomPositionAtRank('1')
     let positionArray = startingPosition.split("")
     const endingPosition = `${positionArray[0]}${Number(positionArray[1]) + 2}`
     expect(moveKing({from: startingPosition, to: endingPosition})).toBe(false);
   })
 
   test('should move one square back', () => {
-    const startingPosition = randomPosition()
+    const startingPosition = randomPositionAtRank('8')
     let positionArray = startingPosition.split("")
     const endingPosition = `${positionArray[0]}${Number(positionArray[1]) - 1}`
     expect(moveKing({from: startingPosition, to: endingPosition})).toBe(true);
   })
 
   test('should not move two squares back', () => {
-    const startingPosition = randomPosition()
+    const startingPosition = randomPositionAtRank('8')
     let positionArray = startingPosition.split("")
     const endingPosition = `${positionArray[0]}${Number(positionArray[1]) - 2}`
     expect(moveKing({from: startingPosition, to: endingPosition})).toBe(false);
   })
 
   test('should move one square to the left', () => {
-    const startingPosition = randomPosition()
+    const startingPosition = randomPositionAtFile('h')
     let positionArray = startingPosition.split("")
     const endingPosition = `${oneFileToTheLeftOf(positionArray[0])}${positionArray[1]}`
     expect(moveKing({from: startingPosition, to: endingPosition})).toBe(true);
   })
 
   test('should not move two squares to the left', () => {
-    const startingPosition = randomPositionAtRank('d')
+    const startingPosition = randomPositionAtFile('h')
     let positionArray = startingPosition.split("")
     const twoFilesToTheLeftOfStartingFile = oneFileToTheLeftOf(oneFileToTheLeftOf(positionArray[0]))
     const endingPosition = `${twoFilesToTheLeftOfStartingFile}${positionArray[1]}`
@@ -51,14 +51,14 @@ describe('Kings', () => {
   })
 
   test('should move one square to the right', () => {
-    const startingPosition = randomPosition()
+    const startingPosition = randomPositionAtFile('a')
     let positionArray = startingPosition.split("")
     const endingPosition = `${oneFileToTheRightOf(positionArray[0])}${positionArray[1]}`
     expect(moveKing({from: startingPosition, to: endingPosition})).toBe(true);
   })
 
   test('should not move two squares to the right', () => {
-    const startingPosition = randomPositionAtRank('d')
+    const startingPosition = randomPositionAtFile('a')
     let positionArray = startingPosition.split("")
     const twoFilesToTheRightOfStartingFile = oneFileToTheRightOf(oneFileToTheRightOf(positionArray[0]))
     const endingPosition = `${twoFilesToTheRightOfStartingFile}${positionArray[1]}`
