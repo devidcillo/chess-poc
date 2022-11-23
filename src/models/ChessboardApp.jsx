@@ -4,7 +4,7 @@ import {handleMove} from "../handlers/HandleMove";
 import {castlingPossible, startPosition} from "../initialState";
 
 const ChessboardApp = () => {
-  const [state, setState] = React.useState(startPosition)
+  const [state, setState] = useState(startPosition)
 
   const handleMoveAndUpdate = (from, to, piece) => {
     const stateCopy = {...state}
