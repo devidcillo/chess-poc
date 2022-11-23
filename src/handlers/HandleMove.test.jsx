@@ -56,20 +56,20 @@ describe('Handle Move', function () {
       expect(handleMove('a1','a2','wK')).toBe(true)
       expect(handleMove('a8','a7','bR')).toBe(true)
     })
-    //
-    // test('should move backward', () => {
-    //   expect(handleMove('a8','a1','wR')).toBe(true)
-    //   expect(handleMove('a8','a1','bR')).toBe(true)
-    // })
-    //
-    // test('should move left', () => {
-    //   expect(handleMove('a1','h1','wR')).toBe(true)
-    //   expect(handleMove('a1','h1','bR')).toBe(true)
-    // })
-    //
-    // test('should move right', () => {
-    //   expect(handleMove('h8','h1','wR')).toBe(true)
-    //   expect(handleMove('h8','h1','bR')).toBe(true)
-    // })
+
+    test('should move backward one space', () => {
+      expect(handleMove('a8','a7','wK')).toBe(true)
+      expect(handleMove('a8','a7','bK')).toBe(true)
+    })
+
+    test('should move left', () => {
+      expect(handleMove('a1','b1','wK')).toBe(true)
+      expect(handleMove('a1','b1','bK')).toBe(true)
+    })
+
+    test('should move right', () => {
+      expect(handleMove('h8','h7','wK')).toBe(true)
+      expect(handleMove('h8','h7','bK')).toBe(true)
+    })
   })
 })
