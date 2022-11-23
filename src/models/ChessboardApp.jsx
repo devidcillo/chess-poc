@@ -2,6 +2,7 @@ import {Chessboard} from "react-chessboard";
 import React, { useState } from 'react';
 import {handleMove} from "../handlers/HandleMove";
 import {castlingPossible, startPosition} from "../initialState";
+import {handleSpecialMove} from "../handlers/HandleSpecialMove";
 
 const ChessboardApp = () => {
   const [state, setState] = useState(startPosition)
@@ -20,6 +21,8 @@ const ChessboardApp = () => {
     if ('Enter' === event.code) {
       if ('castle' === moveString)
         setState(castlingPossible)
+      else if ('0-0' === moveString)
+        handleMoveAndUpdate('e1', 'g1', 'wK')
       else {
         const from = moveString.slice(0, 2);
         const to = moveString.slice(2, 4);

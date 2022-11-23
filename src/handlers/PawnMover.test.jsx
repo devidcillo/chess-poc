@@ -13,7 +13,7 @@ describe('Pawn Mover', function () {
       const startingPosition = randomPosition()
       let positionArray = startingPosition.split("")
       const endingPosition = `${positionArray[0]}${Number(positionArray[1]) + 1}`
-      expect(movePawn({from: startingPosition, to: endingPosition, color: 'w'})).toBe(true);
+      expect(movePawn({from: startingPosition, to: endingPosition, color: 'w'})).toBe(true)
     })
 
     test('should be able to move forward 2 spaces when on starting position', () => {
