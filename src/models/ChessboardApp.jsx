@@ -1,5 +1,5 @@
 import {Chessboard} from "react-chessboard";
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {handleMove} from "../handlers/HandleMove";
 import {castlingPossible, startPosition} from "../initialState";
 import {handleSpecialMove} from "../handlers/HandleSpecialMove";
@@ -14,7 +14,13 @@ const ChessboardApp = () => {
     if ('0-0' === moveString) {
       console.log('handle record', record)
       const updatedRecord = handleSpecialMove(moveString, record)
+      if (updatedRecord === record) {
+        console.log('records are the same')
+        setIsError(true)
+      }
       setRecord(updatedRecord)
+      setIsError(false)
+      setIsSuccess(true)
     }
   }
 
@@ -43,8 +49,7 @@ const ChessboardApp = () => {
       if ('castle' === moveString) {
         setRecord(castlingPossible)
         setIsError(false)
-      }
-      else if ('0-0' === moveString)
+      } else if ('0-0' === moveString)
         handleSpecialMoveAndUpdate('0-0')
       else {
         const from = moveString.slice(0, 2);
@@ -60,9 +65,10 @@ const ChessboardApp = () => {
       <Chessboard position={record} arePiecesDraggable={false}/>
       <div>
         <label htmlFor={'moveInput'}>Move:</label>
-        <input id="moveInput" data-testid="moves-input" placeholder="Example: a2a3" type={"text"} onChange={handleChange} onKeyDown={processInputEvent} maxLength={10} value={move} />
+        <input id="moveInput" data-testid="moves-input" placeholder="Example: a2a3" type={"text"}
+               onChange={handleChange} onKeyDown={processInputEvent} maxLength={10} value={move}/>
       </div>
-      
+
       {isError && (<div data-testid="error-message">
         <h5>Invalid move! Try a different move</h5>
       </div>)}
