@@ -13,9 +13,10 @@ describe('ChessboardApp', () => {
     expect(screen.getByRole('textbox')).toBeInTheDocument();
     expect(screen.getByPlaceholderText('Example: a2a3')).toBeInTheDocument();
     expect(screen.queryByRole('heading', {name: 'Invalid move! Try a different move'})).toBeNull();
+    expect(screen.queryByRole('heading', {name: 'Great move!'})).toBeNull();
   });
 
-  test('should render sucess message when users does valid move', () => {
+  test('should render success message when users does valid move', () => {
     render(<ChessboardApp/>);
 
     userEvent.type(screen.getByRole('textbox'), 'a2a4');
