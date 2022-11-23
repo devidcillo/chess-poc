@@ -15,24 +15,4 @@ describe('ChessboardApp', () => {
     expect(screen.queryByRole('heading', {name: 'Invalid move! Try a different move'})).toBeNull();
     expect(screen.queryByRole('heading', {name: 'Great move!'})).toBeNull();
   });
-
-  test('should render success message when users does valid move', () => {
-    render(<ChessboardApp/>);
-
-    userEvent.type(screen.getByRole('textbox'), 'a2a4');
-    userEvent.type(screen.getByRole('textbox'), '[Enter]');
-
-    expect(screen.getByRole('heading', {name: 'Great move!'})).toBeInTheDocument()
-    expect(screen.queryByRole('heading', {name: 'Invalid move! Try a different move'})).toBeNull();
-  });
-
-  test('should render error message when users does invalid move', () => {
-    render(<ChessboardApp/>);
-
-    userEvent.type(screen.getByRole('textbox'), 'a2b4');
-    userEvent.type(screen.getByRole('textbox'), '[Enter]');
-
-    expect(screen.getByRole('heading', {name: 'Invalid move! Try a different move'})).toBeInTheDocument()
-    expect(screen.queryByRole('heading', {name: 'Great move!'})).toBeNull()
-  });
 });
