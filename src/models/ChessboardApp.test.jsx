@@ -1,15 +1,14 @@
 import React from "react";
-import {render} from "@testing-library/react";
+import {render, screen} from "@testing-library/react";
 import ChessboardApp from "../../src/models/ChessboardApp";
 
-describe('ChessboardApp', () => {
+describe.only('ChessboardApp', () => {
   test('should render empty board', () => {
-    const element = render(<ChessboardApp/>)
-    const board = element.getAllByTestId('board')
-    expect(board).toBeDefined()
+    render(<ChessboardApp/>);
 
-    // input text to be in the document
-
+    expect(screen.getByTestId('board')).toBeInTheDocument();
+    expect(screen.getByRole('textbox')).toBeInTheDocument();
+    expect(screen.getByPlaceholderText('Example: A1A2')).toBeInTheDocument();
   });
 });
 

@@ -33,7 +33,7 @@ const ChessboardApp = () => {
   return (
     <div data-testid='board'>
       <Chessboard position={state} arePiecesDraggable={false}/>
-      <input data-testid="moves-input" type={"text"} onKeyDown={processInputEvent} maxLength={10}/>
+      <input data-testid="moves-input" placeholder="Example: A1A2" type={"text"} onKeyDown={processInputEvent} maxLength={10}/>
     </div>
   )
 }
