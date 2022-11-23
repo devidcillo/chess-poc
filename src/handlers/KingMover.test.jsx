@@ -1,4 +1,9 @@
-import {randomPosition} from "../utils/PositionRandomizer";
+import {
+  oneFileToTheLeftOf,
+  oneFileToTheRightOf,
+  randomPosition,
+  randomPositionAtRank
+} from "../utils/PositionRandomizer";
 import {moveKing} from "./KingMover";
 
 describe('Kings', () => {
@@ -31,19 +36,33 @@ describe('Kings', () => {
   })
 
   test('should move one square to the left', () => {
-    expect(moveKing({from: 'h1', to: 'g1'})).toBe(true);
+    const startingPosition = randomPosition()
+    let positionArray = startingPosition.split("")
+    const endingPosition = `${oneFileToTheLeftOf(positionArray[0])}${positionArray[1]}`
+    expect(moveKing({from: startingPosition, to: endingPosition})).toBe(true);
   })
 
   test('should not move two squares to the left', () => {
-    expect(moveKing({from: 'h1', to: 'f1'})).toBe(false);
+    const startingPosition = randomPositionAtRank('d')
+    let positionArray = startingPosition.split("")
+    const twoFilesToTheLeftOfStartingFile = oneFileToTheLeftOf(oneFileToTheLeftOf(positionArray[0]))
+    const endingPosition = `${twoFilesToTheLeftOfStartingFile}${positionArray[1]}`
+    expect(moveKing({from: startingPosition, to: endingPosition})).toBe(false);
   })
 
   test('should move one square to the right', () => {
-    expect(moveKing({from: 'a1', to: 'b1'})).toBe(true);
+    const startingPosition = randomPosition()
+    let positionArray = startingPosition.split("")
+    const endingPosition = `${oneFileToTheRightOf(positionArray[0])}${positionArray[1]}`
+    expect(moveKing({from: startingPosition, to: endingPosition})).toBe(true);
   })
 
   test('should not move two squares to the right', () => {
-    expect(moveKing({from: 'a1', to: 'c1'})).toBe(false);
+    const startingPosition = randomPositionAtRank('d')
+    let positionArray = startingPosition.split("")
+    const twoFilesToTheRightOfStartingFile = oneFileToTheRightOf(oneFileToTheRightOf(positionArray[0]))
+    const endingPosition = `${twoFilesToTheRightOfStartingFile}${positionArray[1]}`
+    expect(moveKing({from: startingPosition, to: endingPosition})).toBe(false);
   })
 
   test('should move one square diagonal up and left', () => {

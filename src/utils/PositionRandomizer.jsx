@@ -27,3 +27,28 @@ export const oneSquareBack = (startingPosition, color) => {
   const newRank = Number(positionArray[1]) + positionModifier
   return `${positionArray[0]}${newRank}`
 }
+
+export const oneFileToTheLeftOf = givenFile => {
+  const adjacentFiles = {
+    'b': 'a',
+    'c': 'b',
+    'd': 'c',
+    'e': 'd',
+    'f': 'e',
+    'h': 'g'
+  }
+  return adjacentFiles[givenFile]
+}
+
+
+export const oneFileToTheRightOf = givenFile => {
+  const adjacentFiles = {
+    'a': 'b',
+    'b': 'c',
+    'c': 'd',
+    'd': 'e',
+    'e': 'f',
+    'g': 'h'
+  }
+  return adjacentFiles[givenFile]
+}
