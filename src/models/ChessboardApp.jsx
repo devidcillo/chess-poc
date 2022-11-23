@@ -6,15 +6,9 @@ import {handleSpecialMove} from "../handlers/HandleSpecialMove";
 
 const ChessboardApp = () => {
   const [record, setRecord] = useState(startPosition)
+  const [isSuccess, setIsSuccess] = useState(false)
   const [isError, setIsError] = useState(false)
-  const [isInProgress, setIsInProgress] = useState(false)
   const [move, setMove] = useState('')
-
-  const resetMove = () => {
-    setMove('')
-    setIsError(false)
-    setIsInProgress(true)
-  }
 
   const handleMoveAndUpdate = (from, to, piece) => {
     if (handleMove(from, to, piece)) {
@@ -22,7 +16,9 @@ const ChessboardApp = () => {
       stateCopy[from] = ''
       stateCopy[to] = piece
       setRecord({...stateCopy})
-      resetMove()
+      setMove('')
+      setIsSuccess(true)
+      setIsError(false)
     } else {
       setIsError(true)
     }
@@ -35,8 +31,6 @@ const ChessboardApp = () => {
   const processInputEvent = event => {
     if ('Enter' === event.code) {
       const moveString = event.target.value
-      
-      setIsInProgress(true)
 
       if ('castle' === moveString) {
         setRecord(castlingPossible)
@@ -51,9 +45,6 @@ const ChessboardApp = () => {
     }
   }
 
-  const shouldShowError = isError
-  const shouldShowSucess = !isError && isInProgress
-
   return (
     <div data-testid='board'>
       <Chessboard position={record} arePiecesDraggable={false}/>
@@ -62,11 +53,11 @@ const ChessboardApp = () => {
         <input id="moveInput" data-testid="moves-input" placeholder="Example: a2a3" type={"text"} onChange={handleChange} onKeyDown={processInputEvent} maxLength={10} value={move} />
       </div>
       
-      {shouldShowError && (<div data-testid="error-message">
+      {isError && (<div data-testid="error-message">
         <h5>Invalid move! Try a different move</h5>
       </div>)}
 
-      {shouldShowSucess && (<div data-testid="success-message">
+      {isSuccess && (<div data-testid="success-message">
         <h5>Great move!</h5>
       </div>)}
     </div>
