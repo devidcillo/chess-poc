@@ -24,3 +24,6 @@ describe('empty spec', () => {
     cy.get('[data-square="c1"]').find('path').should('exist')
   })
 })
+
+
+//TODO Add a king or rook move (David)

@@ -22,6 +22,14 @@ describe('Pawn Mover', function () {
       const endingPosition = `${positionArray[0]}${Number(positionArray[1]) + 2}`
       expect(movePawn({from: startingPosition, to: endingPosition, color: 'w'})).toBe(true);
     })
+
+    //TODO Add a king or rook move (David)
+    test.skip('should not be able to move forward more than 2 spaces when on starting position', () => {
+      const startingPosition = randomPositionAtRank(2)
+      const positionArray = startingPosition.split("");
+      const endingPosition = `${positionArray[0]}${Number(positionArray[1]) + 3}`
+      expect(movePawn({from: startingPosition, to: endingPosition, color: 'w'})).toBe(false);
+    })
   })
 
   describe('Black Pawn', () => {
