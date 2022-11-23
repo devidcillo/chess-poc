@@ -10,6 +10,14 @@ const ChessboardApp = () => {
   const [isError, setIsError] = useState(false)
   const [move, setMove] = useState('')
 
+  const handleSpecialMoveAndUpdate = moveString => {
+    if ('0-0' === moveString) {
+      console.log('handle record', record)
+      const updatedRecord = handleSpecialMove(moveString, record)
+      setRecord(updatedRecord)
+    }
+  }
+
   const handleMoveAndUpdate = (from, to, piece) => {
     if (handleMove(from, to, piece)) {
       const stateCopy = {...record}
@@ -36,6 +44,8 @@ const ChessboardApp = () => {
         setRecord(castlingPossible)
         setIsError(false)
       }
+      else if ('0-0' === moveString)
+        handleSpecialMoveAndUpdate('0-0')
       else {
         const from = moveString.slice(0, 2);
         const to = moveString.slice(2, 4);
