@@ -17,7 +17,7 @@ describe('API Pact test', () => {
     test('opening does not exist', async () => {
 
       mockProvider
-        .given('a opening with ID 11 does not exist')
+        .given('a opening with ID 100 does not exist')
         .uponReceiving('a request to get a opening')
         .withRequest({
           method: 'GET',
