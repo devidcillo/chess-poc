@@ -1,76 +1,36 @@
-[Chessboard](https://www.chessboardjsx.com/basics/start-position)
+# Simple React Chessboard App
 
-# Getting Started with Create React App
+This project was built to encourage the exploration and implementation of different types of tests on a  [React](https://reactjs.org/) project by implementing the different rules of chess to a plain board.
+
+Tests and tools included are:
+- Unit tests with [Jest](https://jestjs.io/)
+- Component tests with [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/)
+- Browser Automation tests with [Cypress](https://www.cypress.io/)
+- Consumer Contract tests with [PactJS](https://pact.io/)
+
+This project uses [Chessboardjsx](https://www.chessboardjsx.com/basics/start-position) as our starting board.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Branches
 
-In the project directory, you can run:
+The code on the `main` branch is intentionally faulty, as the Pawn movement has a bug that can serve as a starting point for unit tests
 
-### `npm start`
+The `develop` branch, on the other hand, has all four types of tests implemented and working
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Requirements
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Node v16+
+- npm v8+
 
-### `npm test`
+## Running the app
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+`npm install` will fetch all needed js libraries
 
-### `npm run build`
+`npm start` will, by default, start the app on localhost's port `3000`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+`npm test` will run all available tests
 
 ### Authors
-David Corrales
-Pamela Pluas
+[David Corrales](mailto:m.david.corrales@gmail.com)
+[Pamela Pluas](mailto:pamepluas@gmail.com)
